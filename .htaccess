@@ -10,7 +10,7 @@
 RewriteCond %{REQUEST_URI} !^/proto/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /proto/$1 [L,R=301]
+RewriteRule ^(.*)$ /proto/$1 [L]
 
 
 RewriteCond %{REQUEST_URI} !^/project/
