@@ -1,0 +1,34 @@
+/**
+ * Date: 2018/09/15 
+ * Author: ASeryakov
+ */
+#wait-please, .wait-please {
+    visibility:hidden;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+.loader {
+    position:absolute;
+    z-index:1002;
+    width:42px;
+    height:42px;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin:auto;
+}
+.overlay, #ajax-loader {
+    width:100%;
+    height:100%;
+    background-color: #fff;
+    opacity: 0.9;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:1001;
+}
