@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+    RewriteEngine On
+    #RewriteCond %{REQUEST_FILENAME} !-f [OR]
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteRule . index.php
+	
+	
+
+RewriteCond %{REQUEST_URI} !^/proto/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /proto/$1 [L,R=301]
+
+
+RewriteCond %{REQUEST_URI} !^/project/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /project/$1 [L,R=301]	
+	
+</IfModule>
+
