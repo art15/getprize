@@ -34,6 +34,7 @@ if(!empty($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQU
                     $_SESSION["auth_user"] = [
                         "id" => "1",
                         "name" => $test_login,
+                        "loyaltyBonus" => 0
                     ];
                     $state = "success";
                 }else{
@@ -52,7 +53,22 @@ if(!empty($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQU
                     //$state = $response[state];
                 break;
             case "declinePrize"; //отказ от приза
-                
+                    $response = (new Calculate())->declinePrize();
+                    exit(json_encode($response));
+                break;
+            case "moneyToBankAccount": //перевод денег на счет в банке
+                    $response = (new Calculate())->moneyToBankAccount();
+                    exit(json_encode($response));
+                break;
+            case "moneyConvertToBonus": //конвертация денег в бонусы
+                    $response = (new Calculate())->moneyConvertToBonus();
+                    exit(json_encode($response));
+                break;
+            case "sendParcel": //запрос на отправку посылки почтой
+                    //здесь можно описать процесс уведомления работника, что, куда, как и кому отправлять.
+                    //после отправки работник должен уведомить пользователя
+                    $response = (new Calculate())->sendParcel();
+                    exit(json_encode($response));
                 break;
         }
     }

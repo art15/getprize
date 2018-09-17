@@ -15,7 +15,8 @@ abstract class Prize extends main {
     protected $name; //название предмета
     protected $amount; //доступное количество (доступная сумма)
     
-    protected $randomAmount;
+    protected $randomAmount; //сумма или количество, которое будет случайно выбрано
+    public $textPrize;
     
     public function getRandomAmount() {
         return $this->randomAmount;
@@ -75,6 +76,7 @@ abstract class Prize extends main {
     
     //преобразуем массив данных в объект
     public function createObj(array $randomPrizeData){
+        //массив нужен для преобразования цифровых индексов в поля класса приза
         $fieldname = split(";","id;type;min;max;name;amount"); //название поля => индекс
         foreach($randomPrizeData as $indx=>$data){
             $property = $fieldname[$indx];
@@ -88,4 +90,13 @@ abstract class Prize extends main {
     }
 
     public abstract function calc();
+    public abstract function isTransferToBankAcc(); //можно ли переводить в банк
+    public abstract function isConvertToBonus(); //конвертируется ли в бонусы
+    public abstract function isSendAsParcel(); //отправляется ли как посылка
+    
+    public function getArray(){
+        $vars = get_object_vars($this);
+        unset($vars["config"]);
+        return $vars;
+    }
 }

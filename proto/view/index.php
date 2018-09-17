@@ -1,3 +1,5 @@
+<?php 
+if ( ! session_id() ) @ session_start();?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -13,14 +15,19 @@
         <div class="loader"><i class="fa fa-spinner fa-3x fa-pulse"></i></div>
         <div class="overlay"></div>
     </div>
+    <div class="text-muted small" style="opacity:0.5;position:fixed;top:10px;right:10px;">Тестовое задание выполнил Серяков Артём, 2018/09</div>
     <center>
 <?php
 if(!empty($_SESSION["auth_user"])){ //если прошли авторизацию
     ?>
     <div class="container pt-4">
         <div class="mx-auto">
-            Здравствуйте, <?=$_SESSION["auth_user"]["name"]?>!&nbsp;&nbsp;
-            <button id="logout-button" class="btn btn-warning" title="выйти"><i class="fa fa-unlock"></i></button>
+            Здравствуйте, <?=$_SESSION["auth_user"]["name"]?>!
+            <button id="logout-button" class="ml-1 btn btn-warning" title="выйти"><i class="fa fa-unlock"></i></button>
+            <br />
+            <span class="small">ваши бонусы лояльности: 
+                <strong id="bonusAmount" class="text-bold text-primary"></strong>
+            </span>
         </div>
     <?php 
     include_once('/view/getprize.php');?>

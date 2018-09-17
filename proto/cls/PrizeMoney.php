@@ -15,6 +15,9 @@ class PrizeMoney extends Prize {
         }else{
             $this->randomAmount = rand($this->min, $this->max);
         }
-        //return ["message"=>"составил ".$prize." ".$this->params["currencySymbol"], "amount"=> $prize];
+        $this->textPrize = "Поздравляем! Ваш выигрыш составил ".$this->randomAmount." ".$this->config["currencySymbol"];
     }
+    public function isTransferToBankAcc(){return true;} //можно ли переводить в банк
+    public function isConvertToBonus(){return true;} //конвертируется ли в бонусы
+    public function isSendAsParcel(){return false;} //отправляется ли как посылка
 }
